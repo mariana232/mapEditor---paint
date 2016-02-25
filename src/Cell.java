@@ -11,7 +11,7 @@ public class Cell {
 
     public Cell(int x, int y , int cellSize) {
         square = new Rectangle(x, y, cellSize, cellSize);
-        square.setColor(Color.BLACK);
+        square.setColor(Color.LIGHT_GRAY);
     }
 
     public void paint() {
@@ -20,7 +20,7 @@ public class Cell {
 
     public boolean isPainted() {
         return painted;
-    }
+    } // change to integer
 
     public void draw() {
         square.draw();
