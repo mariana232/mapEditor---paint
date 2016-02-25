@@ -32,17 +32,19 @@ public class Representation {
     }
 
     public boolean isOutsideBorder(int col, int row) {
-        return col  < 0 || row < 0 || col > grid.getCols() || row > grid.getRows();
+        return col < 0 || row < 0 || col > grid.getCols() || row > grid.getRows();
     }
 
     public void move(Direction direction) {
-
-
+        if(!isOutsideBorder(this.getCol(), this.getRow())) {
+            setCol(this.getCol() - direction.getDirCol());
+            setRow(this.getRow() - direction.getDirRow());
+        }
     }
 
-    public void setColor(Color color) {
+/*    public void setColor(Color color) {
         rectangle.setColor(color);
         //rectangle.fill();
-    }
+    }*/
 
 }

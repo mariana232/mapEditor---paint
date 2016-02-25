@@ -150,8 +150,7 @@ public class Map {
 
 
             }else if (e.getSource() == newButton) {
-                Field field = new Field();
-                field.init(25,25,20);
+
                 log.append("creating new Map");
             }
 
