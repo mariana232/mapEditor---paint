@@ -1,5 +1,8 @@
+import org.academiadecodigo.simplegraphics.graphics.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -9,32 +12,24 @@ import java.io.File;
  */
 public class Map {
 
+    private int[][] grid;
 
-    public Map(){
-
+    public Map() {
+        createField(Config.GRID_COLUMNS, Config.GRID_ROWS);
         //init empty field
         loadMenu();
     }
 
-    public Map(String FilePath){
+    public void createField(int cols, int rows) {
+        grid = new int[rows][cols];
 
-        //load field with file stream
-
+        Representation r = new Representation(grid);
+        r.createCanvas();
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    private void loadMenu(){
+    private void loadMenu() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 //Turn off metal's use of bold fonts
@@ -44,14 +39,6 @@ public class Map {
             }
         });
     }
-
-
-
-
-
-
-
-
 
 
     private class Menu extends JPanel
@@ -103,9 +90,9 @@ public class Map {
 
             //For layout purposes, put the buttons in a separate panel
             JPanel buttonPanel = new JPanel(); //use FlowLayout
-            buttonPanel.add(openButton,0);
-            buttonPanel.add(saveButton,1);
-            buttonPanel.add(newButton,2);
+            buttonPanel.add(openButton, 0);
+            buttonPanel.add(saveButton, 1);
+            buttonPanel.add(newButton, 2);
 
             //Add the buttons and the log to this panel.
             add(buttonPanel, BorderLayout.PAGE_START);
@@ -149,7 +136,8 @@ public class Map {
                 log.setCaretPosition(log.getDocument().getLength());
 
 
-            }else if (e.getSource() == newButton) {
+            } else if (e.getSource() == newButton) {
+
 
                 log.append("creating new Map");
             }
@@ -191,7 +179,6 @@ public class Map {
 
 
     }
-
 
 
 }

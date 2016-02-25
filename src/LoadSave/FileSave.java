@@ -22,7 +22,6 @@ public class FileSave {
      */
     public void save(Integer[][] rowsAndCols) {
 
-
         if (fl.exists()) {
             fl.delete();
         }
