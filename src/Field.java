@@ -18,6 +18,6 @@ public class Field{
 
         rectangle = new Rectangle(OFFSET, OFFSET, cols*cellSize, rows*cellSize);
         rectangle.setColor(Color.BLACK);
-        rectangle.fill();
+        rectangle.draw();
     }
 }
