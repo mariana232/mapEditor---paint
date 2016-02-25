@@ -1,8 +1,5 @@
 package LoadSave;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by JSouza on 24/02/16 Academia de Codigo.
@@ -11,19 +8,18 @@ public class MainJSouza {
 
     public static void main(String[] args) {
 
-        List<List<Integer>> rows = new ArrayList<List<Integer>>();
+        Integer[][] rows = new Integer[10][10];
 
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < rows.length ; i++) {
 
-            List<Integer> row = new ArrayList<Integer>();
 
-            for (int j = 0; j < 25; j++) {
+            for (int j = 0; j < rows[i].length ; j++) {
 
-                row.add(((int) (Math.random() * (9))));
+                rows[i][j] = (((int) (Math.random() * (9))));
             }
 
-            rows.add(row);
+
 
         }
 
@@ -35,26 +31,27 @@ public class MainJSouza {
 
         FileLoad fl = new FileLoad("resources/myMap.txt");
 
-        List<List<Integer>> rowsLoad = fl.load();
+        Integer[][]  mm = fl.load();
 
 
-        Iterator<List<Integer>> iteratorRows = rowsLoad.iterator();
 
-        while (iteratorRows.hasNext()) {
 
-            List<Integer> row = iteratorRows.next();
 
-            String s = "";
+        String s = "";
+        for (int i = 0; i < mm.length ; i++) {
 
-            Iterator<Integer> iteratorRow = row.iterator();
+            for (int j = 0; j < mm[i].length ; j++) {
+                System.out.print(mm[i][j] + " ");
 
-            while (iteratorRow.hasNext()) {
-
-                s = s + iteratorRow.next() + " ";
             }
+            System.out.println("");
 
 
         }
+
+
+
+
     }
 }
 

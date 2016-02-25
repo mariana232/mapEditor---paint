@@ -3,8 +3,6 @@ package LoadSave;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by JSouza on 24/02/16 Academia de Codigo.
@@ -21,33 +19,23 @@ public class FileSave {
     /**
      * Saves the state of each cell in a file
      *
-     * @param rows List with the states of the lines of each cell
      */
-    public void save(List<List<Integer>> rows) {
+    public void save(Integer[][] rowsAndCols) {
 
 
         if (fl.exists()) {
             fl.delete();
         }
 
-        // Iterator for List the rows
-        Iterator<List<Integer>> iteratorRows = rows.iterator();
         try {
             fw = new FileWriter(fl, true);
 
-            while (iteratorRows.hasNext()) {
-
-                //List  States for row
-                List<Integer> row = iteratorRows.next();
+            for (int i = 0; i < rowsAndCols.length ; i++) {
 
                 String s = "";
+                for (int j = 0; j < rowsAndCols[i].length ; j++) {
 
-                // Iterator for row
-                Iterator<Integer> iteratorRow = row.iterator();
-
-                while (iteratorRow.hasNext()) {
-
-                    s = s + iteratorRow.next() + " ";
+                    s = s + rowsAndCols[i][j] + " ";
                 }
 
                 s = s + "\n";

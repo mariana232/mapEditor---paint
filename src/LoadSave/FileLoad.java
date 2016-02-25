@@ -1,44 +1,43 @@
 package LoadSave;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by JSouza on 25/02/16 Academia de Codigo.
  */
 public class FileLoad {
     File fl;
-    List<List<Integer>> rows = new ArrayList<List<Integer>>();
-    
+    int numberCol = 0;
+    int numberRow = 0;
+    Integer[][] rowsAndCols;
 
 
     public FileLoad(String file) {
         fl = new File(file);
     }
 
-    public List<List<Integer>> load() {
 
+    public Integer[][] load() {
+        int col = 0;
 
-        if(!fl.exists()){
+        if (!fl.exists()) {
             System.out.println("File not exist!");
             return null;
         }
 
-        FileReader fw;
-        BufferedReader bw;
-
         try {
-
-            fw = new FileReader(fl);
-            bw = new BufferedReader(fw);
-
             String s = "";
-            while ((s = bw.readLine()) != null) {
-                loadFile(s);
 
+            initArray();
+
+            FileReader fw2 = new FileReader(fl);
+            BufferedReader bw2 = new BufferedReader(fw2);
+            while ((s = bw2.readLine()) != null) {
+
+                loadFile(s, col);
+                col++;
             }
-            bw.close();
+            bw2.close();
 
         } catch (FileNotFoundException e) {
 
@@ -48,26 +47,54 @@ public class FileLoad {
 
             e.printStackTrace();
         }
-        return rows;
+
+        return rowsAndCols;
     }
 
 
-    private void loadFile(String s) {
-        List<Integer> row = new ArrayList<Integer>();
+    private void loadFile(String s, int col) {
         String[] str = s.split(" ");
+
 
         try {
 
-            for (String ss : str) {
-                row.add(Integer.parseInt(ss));
-            }
+            for (int j = 0; j < rowsAndCols.length; j++) {
 
+                rowsAndCols[col][j] = Integer.parseInt(str[j]);
+            }
+            System.out.print("");
         } catch (NumberFormatException e) {
             System.out.println("File with invalid characters.");
             //System.exit(0);
 
         }
 
-        rows.add(row);
+
     }
+
+    private void initArray() {
+
+
+        try {
+            String s;
+            FileReader fw = new FileReader(fl);
+            BufferedReader bw = new BufferedReader(fw);
+            while (( s = bw.readLine()) != null) {
+
+                numberCol = s.split(" ").length;
+                numberRow++;
+            }
+            bw.close();
+
+            rowsAndCols = new Integer[numberCol][numberRow];
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
