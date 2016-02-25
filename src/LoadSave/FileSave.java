@@ -1,6 +1,5 @@
 package LoadSave;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.util.List;
  */
 public class FileSave {
     File fl;
+    FileWriter fw;
 
 
     public FileSave(String file) {
@@ -32,43 +32,35 @@ public class FileSave {
 
         // Iterator for List the rows
         Iterator<List<Integer>> iteratorRows = rows.iterator();
+        try {
+            fw = new FileWriter(fl, true);
 
-        while (iteratorRows.hasNext()) {
+            while (iteratorRows.hasNext()) {
 
-            //List  States for row
-            List<Integer> row = iteratorRows.next();
+                //List  States for row
+                List<Integer> row = iteratorRows.next();
 
-            String s = "";
+                String s = "";
 
-            // Iterator for row
-            Iterator<Integer> iteratorRow = row.iterator();
+                // Iterator for row
+                Iterator<Integer> iteratorRow = row.iterator();
 
-            while (iteratorRow.hasNext()) {
+                while (iteratorRow.hasNext()) {
 
-                s = s + iteratorRow.next() + " ";
+                    s = s + iteratorRow.next() + " ";
+                }
+
+                s = s + "\n";
+                fw.write(s);
+
             }
 
-            s = s + "\n";
-            saveFile(s);
-        }
-    }
-
-
-    private void saveFile(String s) {
-        FileWriter fw;
-
-        try {
-
-            fw = new FileWriter(fl, true);
-            fw.write(s);
             fw.close();
-
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-
         }
+
     }
 
 

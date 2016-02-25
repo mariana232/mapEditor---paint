@@ -27,14 +27,13 @@ public class MainJSouza {
 
         }
 
-/*
-
         FileSave fs = new FileSave("resources/myMap.txt");
         fs.save(rows);
 
-*/
 
-        FileLoad fl = new FileLoad();
+
+
+        FileLoad fl = new FileLoad("resources/myMap.txt");
 
         List<List<Integer>> rowsLoad = fl.load();
 

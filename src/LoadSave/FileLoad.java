@@ -29,7 +29,7 @@ public class FileLoad {
 
         try {
 
-            fw = new FileReader("resources/myMap.txt");
+            fw = new FileReader(fl);
             bw = new BufferedReader(fw);
 
             String s = "";
@@ -37,10 +37,11 @@ public class FileLoad {
                 loadFile(s);
 
             }
+            bw.close();
 
         } catch (FileNotFoundException e) {
 
-            System.out.println("File not exist!");
+            System.out.println("File not exist! 2");
 
         } catch (IOException e) {
 
@@ -62,7 +63,7 @@ public class FileLoad {
 
         } catch (NumberFormatException e) {
             System.out.println("File with invalid characters.");
-            System.exit(0);
+            //System.exit(0);
 
         }
 
