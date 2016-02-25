@@ -10,6 +10,7 @@ import java.util.List;
 public class FileLoad {
     File fl;
     List<List<Integer>> rows = new ArrayList<List<Integer>>();
+    
 
 
     public FileLoad(String file) {
