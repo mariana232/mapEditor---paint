@@ -75,6 +75,6 @@ public class Cursor implements KeyboardHandler{
     }
 
     public void move(Direction direction){
-        representation.move(direction);
+        //representation.move(direction);
     }
 }

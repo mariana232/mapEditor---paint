@@ -11,14 +11,15 @@ public final class Config {
     //GRID DEFINITIONS
     protected static final int GRID_ROWS = 25;
     protected static final int GRID_COLUMNS = 25;
-    protected static final int CELL_SIZE = 20;
+    protected static final int GRID_SIZE = 20;
+    protected static final int GRID_SPACING = 1;
 
     //CORRECTIONS
     protected static  int X_AXIS_CORRECTION = 2;
     protected static  int Y_AXIS_CORRECTION = 26;
 
     //REPRESENTATION
-    protected static final int BORDER_X = 10;
+    protected static final int BORDER_X = 0;
     protected static final int BORDER_Y = 0;
 
 
