@@ -27,7 +27,7 @@ public class Representation {
 
             for (int i = 0; i < gridSquares[0].length; i++) {
                 for (int j = 0; j < gridSquares.length; j++) {
-                    gridSquares[i][j].delete();
+                    gridSquares[j][i].delete();
                 }
             }
         }
@@ -36,13 +36,13 @@ public class Representation {
 
             for (int i = 0; i < cells[0].length; i++) {
                 for (int j = 0; j < cells.length; j++) {
-                    cells[i][j].delete();
+                    cells[j][i].delete();
                 }
             }
         }
 
-        gridSquares = new Rectangle[Config.GRID_ROWS][Config.GRID_COLUMNS];
-        cells = new Rectangle[Config.GRID_ROWS][Config.GRID_COLUMNS];
+        gridSquares = new Rectangle[grid.length][grid[0].length];
+        cells = new Rectangle[grid.length][grid[0].length];
 
 
     }
@@ -68,9 +68,10 @@ public class Representation {
 
         if (field != null) {
             field.delete();
+
         }
 
-        field = new Rectangle(Config.BORDER_X, Config.BORDER_Y, (Config.GRID_COLUMNS * Config.GRID_SIZE), (Config.GRID_ROWS * Config.GRID_SIZE) + 1);
+        field = new Rectangle(Config.BORDER_X, Config.BORDER_Y, (grid[0].length * Config.GRID_SIZE), (grid.length * Config.GRID_SIZE) + 1);
         field.setColor(Color.WHITE);
         field.fill();
 
@@ -131,6 +132,10 @@ public class Representation {
         int posY = cellsRowToY(cursorRow);
         int width = Config.GRID_SIZE - Config.GRID_SPACING;
         int height = Config.GRID_SIZE - Config.GRID_SPACING;
+
+        if(cursorShape != null){
+            cursorShape.delete();
+        }
 
         cursorShape = new Rectangle(posX, posY, width, height);
         cursorShape.setColor(Color.GRAY);

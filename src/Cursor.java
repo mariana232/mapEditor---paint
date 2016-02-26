@@ -15,8 +15,6 @@ public class Cursor implements KeyboardHandler{
 
     public Cursor(Representation representation) {
 
-        //keyConfig();
-
         this.representation = representation;
 
     }
