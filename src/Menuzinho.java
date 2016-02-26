@@ -58,7 +58,6 @@ public class Menuzinho {
 
             //Create the open button.  We use the image from the JLF
             //Graphics Repository (but we extracted it from the jar).
-
             openButton = new JButton("Open");
             openButton.addActionListener(this);
 
@@ -94,15 +93,13 @@ public class Menuzinho {
 
 
                     FileLoad fl = new FileLoad(file.getPath());
-                    //System.out.println(grid.length + " ," + grid[0].length);//------------------------
                     grid = fl.load();
 
                     if (mapa == null) {
                         cursor.initKeyboard();
                         mapa = new Map(rep, cursor);
                     }
-
-                    mapa.loadMap(grid);
+                        mapa.loadMap(grid);
 
                 }
 
@@ -127,7 +124,6 @@ public class Menuzinho {
                     cursor.initKeyboard();
                     mapa = new Map(rep, cursor);
                 }
-
                 mapa.loadMap(grid);
             }
         }
