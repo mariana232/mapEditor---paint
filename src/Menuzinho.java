@@ -101,6 +101,7 @@ public class Menuzinho {
                     if (mapa != null) {
                         mapa.loadMap(grid);
                     } else {
+                        cursor.initKeyboard();
                         mapa = new Map(rep, cursor);
                         mapa.loadMap(grid);
                     }

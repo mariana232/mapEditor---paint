@@ -9,9 +9,9 @@ public final class Config {
     protected static final String FILE_RESOURCES_PATH = "resources/";
 
     //GRID DEFINITIONS
-    protected static final int GRID_ROWS = 25;
-    protected static final int GRID_COLUMNS = 25;
-    protected static final int GRID_SIZE = 20;
+    protected static final int GRID_ROWS = 40;
+    protected static final int GRID_COLUMNS = 40;
+    protected static final int GRID_SIZE = 10;
     protected static final int GRID_SPACING = 1;
 
     //CORRECTIONS
