@@ -18,7 +18,7 @@ public class FileLoad {
 
 
     public int[][] load() {
-        int col = 0;
+        int row = 0;
 
         if (!fl.exists()) {
             System.out.println("File not exist!");
@@ -34,8 +34,8 @@ public class FileLoad {
             BufferedReader bw2 = new BufferedReader(fw2);
             while ((s = bw2.readLine()) != null) {
 
-                loadFile(s, col);
-                col++;
+                loadFile(s, row);
+                row++;
             }
             bw2.close();
 
@@ -52,15 +52,15 @@ public class FileLoad {
     }
 
 
-    private void loadFile(String s, int col) {
+    private void loadFile(String s, int row) {
         String[] str = s.split(" ");
 
 
         try {
 
-            for (int j = 0; j < rowsAndCols.length; j++) {
+            for (int j = 0; j < rowsAndCols[0].length; j++) {
 
-                rowsAndCols[col][j] = Integer.parseInt(str[j]);
+                rowsAndCols[row][j] = Integer.parseInt(str[j]);
             }
             System.out.print("");
         } catch (NumberFormatException e) {
@@ -81,12 +81,14 @@ public class FileLoad {
             BufferedReader bw = new BufferedReader(fw);
             while (( s = bw.readLine()) != null) {
 
-                numberCol = s.split(" ").length;
+                if(numberRow==0){
+                    numberCol = s.split(" ").length;
+                }
                 numberRow++;
             }
             bw.close();
 
-            rowsAndCols = new int[numberCol][numberRow];
+            rowsAndCols = new int[numberRow][numberCol];
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

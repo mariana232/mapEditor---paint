@@ -58,18 +58,16 @@ public class Menuzinho {
 
             //Create the open button.  We use the image from the JLF
             //Graphics Repository (but we extracted it from the jar).
-            openButton = new JButton("Open",
-                    createImageIcon("resources/fileOpen.jpg"));
+
+            openButton = new JButton("Open");
             openButton.addActionListener(this);
 
             //Create the save button.  We use the image from the JLF
             //Graphics Repository (but we extracted it from the jar).
-            saveButton = new JButton("Save",
-                    createImageIcon("/resources/fileSave.png"));
+            saveButton = new JButton("Save");
             saveButton.addActionListener(this);
 
-            newButton = new JButton("New",
-                    createImageIcon("/resources/fileNew.png"));
+            newButton = new JButton("New");
             newButton.addActionListener(this);
 
 
@@ -96,15 +94,21 @@ public class Menuzinho {
 
 
                     FileLoad fl = new FileLoad(file.getPath());
+                    //System.out.println(grid.length + " ," + grid[0].length);//------------------------
                     grid = fl.load();
 
+<<<<<<< HEAD
                     if (mapa != null) {
                         mapa.loadMap(grid);
                     } else {
+=======
+                    if (mapa == null) {
+>>>>>>> b3ab8d26c744f8e6d7bbd9c1ac3d51696489c7c1
                         cursor.initKeyboard();
                         mapa = new Map(rep, cursor);
-                        mapa.loadMap(grid);
                     }
+
+                    mapa.loadMap(grid);
 
                 }
 
@@ -125,13 +129,12 @@ public class Menuzinho {
 
                 grid = new int[Config.GRID_ROWS][Config.GRID_COLUMNS];
 
-                if (mapa != null) {
-                    mapa.loadMap(grid);
-                } else {
+                if (mapa == null) {
                     cursor.initKeyboard();
                     mapa = new Map(rep, cursor);
-                    mapa.loadMap(grid);
                 }
+
+                mapa.loadMap(grid);
             }
         }
 
