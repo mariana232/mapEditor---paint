@@ -9,7 +9,7 @@ public class FileLoad {
     File fl;
     int numberCol = 0;
     int numberRow = 0;
-    Integer[][] rowsAndCols;
+    int[][] rowsAndCols;
 
 
     public FileLoad(String file) {
@@ -17,7 +17,7 @@ public class FileLoad {
     }
 
 
-    public Integer[][] load() {
+    public int[][] load() {
         int col = 0;
 
         if (!fl.exists()) {
@@ -86,7 +86,7 @@ public class FileLoad {
             }
             bw.close();
 
-            rowsAndCols = new Integer[numberCol][numberRow];
+            rowsAndCols = new int[numberCol][numberRow];
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -8,7 +8,7 @@ public class MainJSouza {
 
     public static void main(String[] args) {
 
-        Integer[][] rows = new Integer[10][10];
+        int[][] rows = new int[10][10];
 
 
         for (int i = 0; i < rows.length ; i++) {
@@ -30,8 +30,7 @@ public class MainJSouza {
 
 
         FileLoad fl = new FileLoad("resources/myMap.txt");
-
-        Integer[][]  mm = fl.load();
+        int[][]  mm = fl.load();
 
 
 

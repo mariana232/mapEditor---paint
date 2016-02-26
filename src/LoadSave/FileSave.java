@@ -20,7 +20,7 @@ public class FileSave {
      * Saves the state of each cell in a file
      *
      */
-    public void save(Integer[][] rowsAndCols) {
+    public void save(int[][] rowsAndCols) {
 
         if (fl.exists()) {
             fl.delete();

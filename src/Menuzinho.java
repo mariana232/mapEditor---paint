@@ -1,45 +1,30 @@
 import LoadSave.FileLoad;
 import LoadSave.FileSave;
-import org.academiadecodigo.simplegraphics.graphics.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
- * Created by codecadet on 25/02/16.
+ * Created by codecadet on 26/02/16.
  */
-public class Map {
-
+public class Menuzinho {
 
     private int[][] grid;
-    private Representation r;
-    private Cursor c;
+    private Map mapa;
+    private Representation rep;
+    private Cursor cursor;
 
-    public Map(Representation r, Cursor c) {
+    public Menuzinho() {
 
-        //r = new Representation();
-        this.r = r;
-        this.c = c;
+        loadMenu();
 
-
+        rep = new Representation();
+        cursor = new Cursor(rep);
     }
 
-
-    public void loadMap(int[][] mapGrid) {
-
-        this.grid = mapGrid;
-
-        r.initRepresentation(mapGrid);
-        r.createCanvas();
-        r.initCursor(c);
-
-    }
-
-/*
 
     private void loadMenu() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -112,7 +97,13 @@ public class Map {
 
                     FileLoad fl = new FileLoad(file.getPath());
                     grid = fl.load();
-                    loadMap(grid);
+
+                    if (mapa != null) {
+                        mapa.loadMap(grid);
+                    } else {
+                        mapa = new Map(rep, cursor);
+                        mapa.loadMap(grid);
+                    }
 
                 }
 
@@ -130,19 +121,22 @@ public class Map {
 
                 //Handle new button action.====================================
             } else if (e.getSource() == newButton) {
+
                 grid = new int[Config.GRID_ROWS][Config.GRID_COLUMNS];
-                loadMap(grid);
 
-
-                //log.append("creating new Map");
+                if (mapa != null) {
+                    mapa.loadMap(grid);
+                } else {
+                    cursor.initKeyboard();
+                    mapa = new Map(rep, cursor);
+                    mapa.loadMap(grid);
+                }
             }
-
-
         }
 
-        *//**
-     * Returns an ImageIcon, or null if the path was invalid.
-     *//*
+        /**
+         * Returns an ImageIcon, or null if the path was invalid.
+         */
         protected ImageIcon createImageIcon(String path) {
             java.net.URL imgURL = Menu.class.getResource(path);
 
@@ -156,11 +150,11 @@ public class Map {
             }
         }
 
-        *//**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event dispatch thread.
-     *//*
+        /**
+         * Create the GUI and show it.  For thread safety,
+         * this method should be invoked from the
+         * event dispatch thread.
+         */
         private void createAndShowGUI() {
             //Create and set up the window.
             JFrame frame = new JFrame("Map Editor");
@@ -176,6 +170,6 @@ public class Map {
 
 
     }
-*/
+
 
 }
