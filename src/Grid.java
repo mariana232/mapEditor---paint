@@ -22,6 +22,10 @@ public class Grid {
         cells = new Cell[cols * rows];
     }
 
+    public int getCellSize() {
+        return cellSize;
+    }
+
     public int getWidth() {
         return cols * cellSize;
     }
